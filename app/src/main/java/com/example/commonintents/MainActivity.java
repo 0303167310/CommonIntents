@@ -233,9 +233,22 @@ public class MainActivity extends AppCompatActivity {
                 insertContact();
             }
         });
-        Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
-        pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show contacts with phone numbers
-        startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+        findViewById(R.id.btn_insert_contract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertContact();
+            }
+        });
+        findViewById(R.id.btn_selectContact).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
+                pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+
+                startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+            }
+        });
 
 
 
@@ -480,11 +493,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if(requestCode == PICK_CONTACT_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Uri contactUri = data.getData();
-                processSelectedContact(contactUri);
-            } else {
-                Toast.makeText(this, "Contact selection canceled", Toast.LENGTH_SHORT).show();
+            if (requestCode == PICK_CONTACT_REQUEST) {
+                if (resultCode == RESULT_OK) {
+                    Uri contactUri = data.getData();
+
+                    // Perform operations with the contact data using the contactUri
+                    // For instance, you can retrieve contact details using this URI
+                }
             }
         }
     }

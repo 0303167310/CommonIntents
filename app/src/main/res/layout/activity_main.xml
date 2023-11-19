@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <LinearLayout
             android:id="@+id/create_alarm_layout"
             android:layout_width="match_parent"
@@ -121,7 +122,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="#808080" />
-
 
 
         </LinearLayout>
